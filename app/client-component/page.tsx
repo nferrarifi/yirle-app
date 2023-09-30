@@ -17,6 +17,7 @@ export default function ClientComponent() {
       // the `Create Table and seed with data` section of the README 👇
       // https://github.com/vercel/next.js/blob/canary/examples/with-supabase/README.md
       const { data } = await supabase.from('todos').select()
+      console.log (data)
       if (data) {
         setTodos(data)
       }
