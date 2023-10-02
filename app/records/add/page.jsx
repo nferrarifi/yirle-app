@@ -1,20 +1,16 @@
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import Link from 'next/link'
-import LogoutButton from '../components/LogoutButton'
-import SupabaseLogo from '../components/SupabaseLogo'
-import NextJsLogo from '../components/NextJsLogo'
-import Crudtest from '../components/Crudtest'
-import DeployButton from '../components/DeployButton'
+import LogoutButton from '../../../components/LogoutButton'
 import Image from 'next/image'
+import AddForm from '../../../components/AddForm'
 import { redirect } from 'next/navigation'
-import Card from "../components/Card"
 
 export const dynamic = 'force-dynamic'
 
 const supabase = createServerComponentClient({ cookies })
 
-async function toggleTodo(todo: string) {
+async function toggleTodo(todo) {
   "use server"
   return console.log(await supabase.from('todos').insert({
     title: "New todo"
@@ -27,10 +23,10 @@ export default async function Index() {
     data: { user },
   } = await supabase.auth.getUser()
 
-console.log(user)
+if (user === null) {
+    redirect("/login")
+}
 
-/*  const records = await supabase.from('records').select().eq("userId", user.id)
- */
   return (
     <div className="w-full flex flex-col items-center ">
       <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
@@ -51,6 +47,10 @@ console.log(user)
           )}
         </div>
       </nav>
+      <div className='flex flex-col mt-16 justify-center items-center'>
+        <h1 className=' text-3xl font-light'>Please fill out the following form in order to register your record</h1>
+        <AddForm />
+      </div>
     </div>
   )
 }
