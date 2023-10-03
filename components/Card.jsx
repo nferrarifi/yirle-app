@@ -2,7 +2,7 @@
 
 const Card = ({record}) => {
   return (
-    <div className="w-[250px] rounded shadow-lg mx-10 my-4 cursor-default transition-all hover:-translate-y-2">
+    <div className="w-[250px] h-[530px] rounded shadow-lg my-4 cursor-default transition-all hover:-translate-y-2">
       <img className="w-[250px] rounded-b object-cover h-[350px]" src={record.cover} alt={record.title}/>
       <div className="flex justify-center py-2">
         <div className="font-bold text-xl text-[#703630]">{record.title}</div>

@@ -2,13 +2,9 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import Link from 'next/link'
 import LogoutButton from '../components/LogoutButton'
-import SupabaseLogo from '../components/SupabaseLogo'
-import NextJsLogo from '../components/NextJsLogo'
-import Crudtest from '../components/Crudtest'
-import DeployButton from '../components/DeployButton'
-import Image from 'next/image'
+import HeroSection from '../components/HeroSection'
+import Header from '../components/Header'
 import { redirect } from 'next/navigation'
-import Card from "../components/Card"
 
 export const dynamic = 'force-dynamic'
 
@@ -33,24 +29,8 @@ console.log(user)
  */
   return (
     <div className="w-full flex flex-col items-center ">
-      <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
-        <div className="w-full max-w-4xl flex justify-between items-center text-sm">
-          <div className=' text-6xl'>Yirle</div>
-          {user ? (
-            <div className="flex  items-center gap-4">
-              Hey, {user.email}!
-              <LogoutButton />
-            </div>
-          ) : (
-            <Link
-              href="/login"
-              className="py-2 px-3 flex rounded-md no-underline bg-btn-background hover:bg-btn-background-hover"
-            >
-              Login
-            </Link>
-          )}
-        </div>
-      </nav>
+      <Header user={user} />
+      <HeroSection />
     </div>
   )
 }

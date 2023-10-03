@@ -26,6 +26,8 @@ export default async function Index() {
 
  const records = await supabase.from('records').select().eq("userId", user.id)
 
+ console.log(records)
+
   return (
     <div className="w-full flex flex-col items-center ">
       <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
