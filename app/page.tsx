@@ -8,16 +8,12 @@ import { redirect } from 'next/navigation'
 
 export const dynamic = 'force-dynamic'
 
-const supabase = createServerComponentClient({ cookies })
-
-async function toggleTodo(todo: string) {
-  "use server"
-  return console.log(await supabase.from('todos').insert({
-    title: "New todo"
-  }))
-}
 
 export default async function Index() {
+
+  
+const supabase = createServerComponentClient({ cookies })
+
 
   const {
     data: { user },

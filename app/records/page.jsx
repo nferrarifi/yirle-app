@@ -10,8 +10,6 @@ import CardContainer from "../../components/CardContainer"
 
 export const dynamic = 'force-dynamic'
 
-const supabase = createServerComponentClient({ cookies })
-
 async function toggleTodo(todo) {
   "use server"
   return console.log(await supabase.from('todos').insert({
@@ -20,6 +18,10 @@ async function toggleTodo(todo) {
 }
 
 export default async function Index() {
+
+
+
+const supabase = createServerComponentClient({ cookies })
 
   const {
     data: { user },
