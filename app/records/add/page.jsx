@@ -10,20 +10,8 @@ import Header from '@/components/Header'
 
 export const dynamic = 'force-dynamic'
 
-const supabase = createServerComponentClient({ cookies })
 
 
-const {
-  data: { user },
-} = await supabase.auth.getUser()
-
-
-async function toggleTodo(todo) {
-  "use server"
-  return console.log(await supabase.from('todos').insert({
-    title: "New todo"
-  }))
-}
 
 async function createRecord (formData, ratingValue) {
   "use server"
@@ -43,6 +31,14 @@ async function createRecord (formData, ratingValue) {
 }
 
 export default async function Index() {
+
+  const supabase = createServerComponentClient({ cookies })
+
+
+const {
+  data: { user },
+} = await supabase.auth.getUser()
+
 
 if (user === null) {
     redirect("/login")
