@@ -4,7 +4,9 @@ import Link from 'next/link'
 import LogoutButton from '../../components/LogoutButton'
 import Image from 'next/image'
 import { redirect } from 'next/navigation'
-import Card from "../../components/Card"
+import CardContainer from "../../components/CardContainer"
+
+
 
 export const dynamic = 'force-dynamic'
 
@@ -24,7 +26,7 @@ export default async function Index() {
   } = await supabase.auth.getUser()
 
 
- const records = await supabase.from('records').select().eq("userId", user.id)
+ const records = await supabase.from('records').select().eq("userId", user.id).filter("deleted", "eq", 0)
 
   return (
     <div className="w-full flex flex-col items-center ">
@@ -51,13 +53,7 @@ export default async function Index() {
           <h1 className='text-6xl'>2023 Records</h1>
           <h4>These are the records you have experienced throughout the year</h4>
         </section>
-        <container className='flex flex-wrap justify-center mx-20 lg:mx-40'>
-          {
-          records.data.map ((record) => (
-            <Card record={record} />
-          ))
-        }
-        </container>
+        <CardContainer records={records} />
       </div>
     </div>
   )
