@@ -26,7 +26,7 @@ console.log(user)
   return (
     <div className="w-full flex flex-col items-center ">
       <Header user={user} />
-      <HeroSection />
+      <HeroSection user={user} />
     </div>
   )
 }

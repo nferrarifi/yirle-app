@@ -11,7 +11,13 @@ const Header = ({user}) => {
   return (
     <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16 z-20">
     <div className="w-full max-w-8xl lg:px-16 lg:pt-8 flex justify-between items-center text-sm">
-      <div className=' text-6xl cursor-default'>Yirle</div>
+      <div className='flex items-center space-x-12'>
+        <div className=' text-6xl cursor-default'><a href='/'>Yirle</a></div>
+        <ul className='flex space-x-4'>
+          <li className={user ? "" : "hidden"}><Link href="/records">My Records</Link></li>
+          <li className={user ? "" : "hidden"}><Link href="/records/add">Add Records</Link></li>
+        </ul>
+      </div>
       {user ? (
         <div className="flex  items-center gap-4">
           Hey, {user.email}!

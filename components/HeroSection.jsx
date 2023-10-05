@@ -36,7 +36,7 @@ const imageStyle = {
 console.log (dummycards)
 
 
-export default function HeroSection() {
+export default function HeroSection({user}) {
   const infoRef = useRef()
   function scrollToInfo (ref) {
     console.log(ref)
@@ -77,7 +77,7 @@ export default function HeroSection() {
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <a
-                href="/login"
+                href={user ? "/records" : "/login"}
                 className="rounded-md bg-[#3498db] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#3e82af] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Get started
