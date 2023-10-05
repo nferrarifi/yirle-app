@@ -23,11 +23,6 @@ async function createRecord (formData, ratingValue) {
   formDataObj.year = Number(formDataObj.year)
   formDataObj.userId = user.id
   const result = (await supabase.from('records').insert(formDataObj))
-  if (result.status === 201) {
-    console.log ("Success!")
-    redirect("/records")
-  }
-  else {console.log ("Failure")}
 }
 
 export default async function Index() {
