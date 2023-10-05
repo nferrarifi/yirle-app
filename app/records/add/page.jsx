@@ -13,21 +13,9 @@ export const dynamic = 'force-dynamic'
 
 
 
-async function createRecord (formData, ratingValue) {
-  "use server"
-  const formDataObj = {};
-  formData.forEach((value, key) => {
-    (formDataObj[key] = value)
-  });
-  formDataObj.rating = ratingValue
-  formDataObj.year = Number(formDataObj.year)
-  formDataObj.userId = user.id
-  const result = (await supabase.from('records').insert(formDataObj))
-}
-
 export default async function Index() {
 
-  const supabase = createServerComponentClient({ cookies })
+const supabase = createServerComponentClient({ cookies })
 
 
 const {
@@ -39,12 +27,14 @@ if (user === null) {
     redirect("/login")
 }
 
+
+
   return (
     <div className="w-full flex flex-col items-center ">
       <Header user={user} />
       <div className='flex flex-col mt-16 justify-center items-center'>
         <h1 className=' text-3xl font-light'>Please fill out the following form in order to register your record</h1>
-        <AddForm createRecord={createRecord}/>
+        <AddForm user= {user}/>
       </div>
     </div>
   )

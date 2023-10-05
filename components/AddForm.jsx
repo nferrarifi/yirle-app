@@ -4,11 +4,14 @@ import { motion } from "framer-motion"
 import { StarIcon as StarIcon1 } from "@heroicons/react/24/outline"
 import { StarIcon as StarIcon2 } from "@heroicons/react/24/solid"
 import { useState, useEffect } from "react"
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
+import { redirect } from "next/navigation"
 
 
 
-const AddForm = ({createRecord, toast}) => {
+const AddForm = ({user}) => {
 
+  const supabase = createClientComponentClient()
   const [rating, setRating] = useState(0)
   useEffect(() => {
     
@@ -21,11 +24,27 @@ const AddForm = ({createRecord, toast}) => {
     else setRating (ratingSelected)
   }
 
+  async function createRecord (formData, ratingValue) {
+    const formDataObj = {};
+    formData.forEach((value, key) => {
+      (formDataObj[key] = value)
+    });
+    formDataObj.rating = ratingValue
+    formDataObj.year = Number(formDataObj.year)
+    formDataObj.userId = user.id
+    const result = (await supabase.from('records').insert(formDataObj))
+    if (result.status === 201) {
+      console.log ("Success!")
+      redirect("/records")
+    }
+    else {console.log ("Failure")}
+  }
+
 
 
   return (
     <div className=" mt-8">
-      <form className="flex flex-col space-y-6" action={(formData) => createRecord(formData, rating)}>
+      <form className="flex flex-col space-y-6" action={(formData) => createRecord(formData, rating, user)}>
       <motion.div className="">
         <label className="block text-[#3498db] text-sm font-bold mb-2" for="title">
           Title
