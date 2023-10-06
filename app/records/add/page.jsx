@@ -30,10 +30,10 @@ if (user === null) {
 
 
   return (
-    <div className="w-full flex flex-col items-center ">
+    <div className="w-full h-full flex flex-col items-center ">
       <Header user={user} />
       <div className='flex flex-col mt-16 justify-center items-center'>
-        <h1 className=' text-3xl font-light'>Please fill out the following form in order to register your record</h1>
+        <h1 className='text-xl xl:text-3xl font-light text-center'>Please fill out the following form in order to register your record</h1>
         <AddForm user= {user}/>
       </div>
     </div>
