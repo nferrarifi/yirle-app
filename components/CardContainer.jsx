@@ -7,7 +7,9 @@ const CardContainer = ({records}) => {
     {
     records.data.map ((record) => (
       <div className='mx-8 mb-16 mt-12' >
-        <Card record={record} />
+        <a href={`/records/edit/${record.id}`}>
+          <Card record={record} />
+        </a>
       </div>
     ))
   }
