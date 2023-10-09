@@ -1,20 +1,20 @@
 "use client"
-import Card from "./Card"
+import RecordCard from "./RecordCard"
 import { useState, useEffect } from "react"
 
 
 
 const CardContainer = ({records}) => {
-  const [filter, setFilter] = useState("")
-  
+  const [typeFilter, setTypeFilter] = useState("")
+
   return (
-    <container className='flex flex-wrap justify-center items-center mx-20 lg:mx-40'>
+    <container className='flex flex-wrap justify-center items-center mx-20 lg:mx-40 transition-all duration-500'>
     {
-    records.data.map ((record) => (
+    records.data.filter((record) => typeFilter === "" ? record : record.type === typeFilter).map ((record) => (
       <div className='mx-8 mb-16 mt-12' >
-        <a href={`/records/edit/${record.id}`}>
-          <Card record={record} />
-        </a>
+{/*         <a href={`/records/edit/${record.id}`}> */}
+          <RecordCard record={record} typeFilter={typeFilter} setTypeFilter={setTypeFilter} />
+{/*         </a> */}
       </div>
     ))
   }
