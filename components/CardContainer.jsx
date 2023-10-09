@@ -1,7 +1,12 @@
 "use client"
 import Card from "./Card"
+import { useState, useEffect } from "react"
+
+
 
 const CardContainer = ({records}) => {
+  const [filter, setFilter] = useState("")
+  
   return (
     <container className='flex flex-wrap justify-center items-center mx-20 lg:mx-40'>
     {

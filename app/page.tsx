@@ -19,8 +19,6 @@ const supabase = createServerComponentClient({ cookies })
     data: { user },
   } = await supabase.auth.getUser()
 
-console.log(user)
-
 /*  const records = await supabase.from('records').select().eq("userId", user.id)
  */
   return (

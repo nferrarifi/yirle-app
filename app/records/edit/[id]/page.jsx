@@ -27,7 +27,7 @@ if (user === null) {
     redirect("/login")
 }
 
-const record = await supabase.from('records').select().eq("userId", user.id).filter("deleted", "eq", 0).eq("id", recordId)
+const record = await supabase.from('records').select().eq("userId", user.id).filter("deleted", "eq", 0).eq("id", recordId).order("id", {ascending: false})
 
 
 if (record.data.length === 0) {

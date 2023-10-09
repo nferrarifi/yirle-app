@@ -34,7 +34,7 @@ export default function DeleteModal({open, setOpen, deleteRecord, title}) {
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
               <Dialog.Panel className="flex flex-col  bg-gray-50 justify-center items-center transform overflow-hidden rounded-lg shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:h-40 space-y-4">
-                <h1 className=' text-xl font-light'>Delete record <span className=' text-[#3498db] font-semibold'>{title}</span>?</h1>
+                <h1 className=' text-xl font-light'>Delete <span className=' text-[#3498db] font-semibold'>{title}</span>?</h1>
                 <div className=" px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                   <button
                     type="button"

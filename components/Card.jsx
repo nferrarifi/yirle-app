@@ -3,9 +3,9 @@ import { StarIcon as StarIcon1 } from "@heroicons/react/24/outline"
 import { StarIcon as StarIcon2 } from "@heroicons/react/24/solid"
 const Card = ({record}) => {
   return (
-    <div className="w-[300px] h-[570px] flex flex-col justify-between rounded shadow-lg my-4 cursor-default transition-all hover:-translate-y-1">
+    <div className="w-[300px] h-[570px] flex flex-col justify-between rounded shadow-lg hover:shadow-[#3498db] my-4 cursor-default transition-all duration-500 hover:-translate-y-1">
       <div>
-        <img className="w-[300px] rounded-b object-cover h-[350px]" src={record.cover} alt={record.title}/>
+        <img className="w-[300px] border object-scale-down h-[350px]" src={record.cover} alt={record.title}/>
         <div className="flex justify-center py-2">
           <div className="font-bold text-xl text-center text-[#3498db] px-2">{record.title}</div>
         </div>

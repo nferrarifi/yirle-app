@@ -109,13 +109,13 @@ const AddForm = ({user}) => {
     <div className=" mt-8">
       <form className="flex flex-col space-y-6" ref={formRef} action={(formData) => createRecord(formData, rating, user)}>
       <motion.div className="">
-        <label className="block text-[#3498db] text-sm font-bold mb-2">
+        <label className="block text-[#3498db] text-md font-bold mb-2">
           Title
         </label>
         <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-[#3498db]" id="title" name="title" type="text"  placeholder="The Titanic"/>
       </motion.div>
       <div className="mb-4">
-        <label className="block text-[#3498db] text-sm font-bold mb-2">
+        <label className="block text-[#3498db] text-md font-bold mb-2">
           Category
         </label>
         <select className="shadow block  w-full  border border-gray-200 text-gray-700 py-2 px-3 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-[#3498db]" name="type" id="type">
@@ -133,7 +133,7 @@ const AddForm = ({user}) => {
         </select>
       </div>
       <div className="mb-4">
-        <label className="block text-[#3498db] text-sm font-bold mb-2" >
+        <label className="block text-[#3498db] text-md font-bold mb-2" >
           Status
         </label>
         <select className="shadow block  w-full  border border-gray-200 text-gray-700 py-2 px-3 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-[#3498db]" name="status" id="status">
@@ -143,7 +143,7 @@ const AddForm = ({user}) => {
         </select>  
       </div>
       <div className="mb-4">
-        <label className="block text-[#3498db] text-sm font-bold mb-2" >
+        <label className="block text-[#3498db] text-md font-bold mb-2" >
           Year
         </label>
         <select className="shadow block  w-full  border border-gray-200 text-gray-700 py-2 px-3 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-[#3498db]" name="year" id="year">
@@ -152,14 +152,14 @@ const AddForm = ({user}) => {
         </select>  
       </div>
       <motion.div className="mb-4">
-        <label className="block text-[#3498db] text-sm font-bold mb-2" >
+        <label className="block text-[#3498db] text-md font-bold mb-2" >
           Cover
         </label>
         <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-[#3498db]" id="cover" name="cover" type="text"  placeholder="www.imgur.com/titanic.png"/>
         <p className="text-xs font-light mt-2 ml-1">Paste the URL for a 'cover' style image</p>
       </motion.div>
       <div className="mb-4">
-        <label className="block text-[#3498db] text-sm font-bold mb-2">
+        <label className="block text-[#3498db] text-md font-bold mb-2">
           {"Rating"}
         </label>
         <ul className="flex mt-2 justify-between">
