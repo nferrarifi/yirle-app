@@ -67,7 +67,7 @@ const AddForm = ({user}) => {
           color: "#3498db"
         }
       })
-      setTimeout(() => router.push("/records"), 1000 )
+      setTimeout(() => router.push("/records"), 2000 )
       
     }
     else {

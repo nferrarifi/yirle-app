@@ -9,12 +9,14 @@ import { redirect } from "next/navigation"
 import { toast, Toaster } from "react-hot-toast"
 import { useRouter } from "next/navigation"
 import PreviewModal from "./PreviewModal"
+import DeleteModal from "./DeleteModal"
 
 
 const EditForm = ({user, record}) => {
 
   const formRef = useRef()
   const [open, setOpen] = useState(false)
+  const [openDeleteModal, setOpenDeleteModal] = useState(false)
   const router = useRouter()
   const supabase = createClientComponentClient()
   const [rating, setRating] = useState(record.rating)
@@ -60,7 +62,7 @@ const EditForm = ({user, record}) => {
       return null
     }
 
-    ///Create record
+    ///Update record
     const result = (await supabase.from('records').update(formDataObj).eq("id", record.id))
     console.log(result)
     if (result.status === 204) {
@@ -69,7 +71,7 @@ const EditForm = ({user, record}) => {
           color: "#3498db"
         }
       })
-      setTimeout(() => router.push("/records"), 1000 )
+      setTimeout(() => router.push("/records"), 2000 )
       
     }
     else {
@@ -106,6 +108,32 @@ const EditForm = ({user, record}) => {
   }
   
 
+  function handleDeleteModal (e) {
+    e.preventDefault()
+    setOpenDeleteModal(true)
+  }
+
+  async function deleteRecord () {
+ ///Update record
+    const result = (await supabase.from('records').update({deleted: true}).eq("id", record.id))
+    console.log(result)
+    if (result.status === 204) {
+      toast.success("Record deleted", {
+        position: "bottom-center", "style": {
+          color: "#3498db"
+        }
+      })
+      setTimeout(() => router.push("/records"), 2000 )
+      
+    }
+    else {
+      toast.error("Something failed", {
+        position: "bottom-center", "style": {
+          color: "#3498db"
+        }
+      })
+    }
+  }
 
   return (
     <div className=" mt-8">
@@ -172,13 +200,16 @@ const EditForm = ({user, record}) => {
           <li className="w-8 h-12 text-[#3498db] cursor-pointer" onClick={() => handleRating(5)}>{rating >= 5 ? <StarIcon2 /> : <StarIcon1/>}</li>
         </ul>
       </div>
-      <div className="flex justify-between">
-        <button className="rounded-md bg-[#3498db] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#3e82af] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all" onClick={(e) => handleModal(e)}>Preview</button>
-        <button className="rounded-md bg-[#27ae60] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#3c8b5d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all" type="submit">Update Record!</button>
+      <div className="flex justify-between space-x-2">
+        <button className="w-[100px] max-h-14 rounded-md bg-[#3498db] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#3e82af] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all" onClick={(e) => handleModal(e)}>Preview</button>
+        <button className="w-[100px] max-h-14 rounded-md bg-[#27ae60] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#3c8b5d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all" type="submit">Update</button>
+        <button className="w-[100px] max-h-14 rounded-md bg-[#f55151] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#bd4545] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all" onClick={(e) => handleDeleteModal(e)}>Delete</button>
       </div>
+
       </form>
       <Toaster />
       <PreviewModal open={open} setOpen={setOpen} previewCard={previewCard} />
+      <DeleteModal open={openDeleteModal} setOpen={setOpenDeleteModal} title={record.title} deleteRecord={deleteRecord} />
     </div>
   )
 }
