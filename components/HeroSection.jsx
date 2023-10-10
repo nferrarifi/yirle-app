@@ -33,19 +33,17 @@ const imageStyle = {
   border: '1px solid #fff',
 }
 
-console.log (dummycards)
 
 
 export default function HeroSection({user}) {
   const infoRef = useRef()
   function scrollToInfo (ref) {
-    console.log(ref)
     ref.current.scrollIntoView({behavior: "smooth"})
   }
 
   return (
     <div className="w-full h-full">
-      <div className="relative isolate px-6 lg:px-8 z-10 h-[90vh]">
+      <div className="relative isolate px-6 lg:px-8 z-10">
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
           aria-hidden="true"
@@ -121,46 +119,50 @@ export default function HeroSection({user}) {
             </h2>
             <h3><span className='text-[#e74c3c]'>Excel sheets</span> and <span className='text-[#e74c3c]'>multiple database websites</span></h3>
             <motion.div initial="hide" whileInView="show" variants={animationVariation (1)} className='2xl:flex hidden py-8 justify-center space-x-8'>
-              <Image style={imageStyle} src={excelImage} width={500} height={500}  />
-              <Image style={imageStyle} src={moviedbImage} width={500} height={500}  />
-              <Image style={imageStyle} src={bookdbImage} width={500} height={500}  />
+              <Image className='' style={imageStyle} src={excelImage} width={500} height={500}  />
+              <Image className='' style={imageStyle} src={moviedbImage} width={500} height={500}  />
+              <Image className='' style={imageStyle} src={bookdbImage} width={500} height={500}  />
             </motion.div>
             <h4 className='pt-24 2xl:pt-0' >Is now a thing from the <span className='text-[#e74c3c]'>past</span></h4>
         </div>  
 
 
-        <div className="flex  xl:flew-row mx-4 xl:mx-32 pt-32 sm:py-48 lg:py-60 items-center justify-center xl:justify-between cursor-default">
+        <div className="flex flex-col xl:flex-row mx-4 xl:mx-32 pt-32 sm:py-48 lg:py-60 items-center justify-between cursor-default">
           <div className=" mb-24">
-            <h1 className="text-3xl font-semibold tracking-tight  sm:text-6xl">
+            <h1 className="text-5xl font-semibold tracking-tight ">
               So... how does it <span className='text-[#3498db]'>work</span>?
             </h1>
             <h3 className='mt-6 text-lg xl:text-2xl'>The process consists of three <span className='text-[#e74c3c]'>simple</span> steps:</h3>
-            <ul className="flex flex-col mt-6 ml-4 text-lg xl:text-2xl leading-8 font-light space-y-2 ">
+            <ul className="flex flex-col mt-6 ml-4 text-lg xl:text-2xl leading-8 font-light space-y-2 justify-center">
               <li>Create/Login to your account</li>
               <li ><span className='line-through'>End world hunger</span></li>
               <li className='flex items-center'>
-                Register your records!
+                Register your records
                 </li>     
             </ul>
 
           </div>
-          <div  className='hidden xl:flex xl:flex-row space-x-8 ml-24'>
+          <div className='hidden md:flex 2xl:flex-row space-x-8 xl:ml-24'>
             {
               dummycards.map((record, index) => (
                 <motion.div initial="hide"
-                whileInView="show" variants={animationVariation(index+0.5)}>
+                whileInView="show" variants={animationVariation(index+0.5)}>                 
                     <Card record={record} />
                 </motion.div>
               ))
             }
           </div>
-
+        </div>  
+        <div className=' flex items-center justify-center'>
+        <a
+                href={user ? "/records" : "/login"}
+                className="rounded-md bg-[#3498db] px-3.5 py-2.5 text-3xl font-semibold text-white shadow-sm hover:bg-[#3e82af] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 -translate-y-12"
+              >
+                Let's get started!
+        </a>
         </div>
-        <div className='flex xl:hidden justify-center'>
-            <Card record={dummycards[0]} />
-          </div>    
         <div
-          className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+          className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)] bottom-0"
           aria-hidden="true"
         >
           <div

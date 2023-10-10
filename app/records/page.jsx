@@ -41,7 +41,6 @@ const supabase = createServerComponentClient({ cookies })
       <div className=''>
         <section className='flex flex-col items-center justify-center space-y-4 lg:mb-10 mb-2 mt-8 '>
           <h1 className='text-6xl'>My Records</h1>
-          <h4>These are the records you have experienced throughout the year</h4>
         </section>
         <CardContainer records={records} />
       </div>

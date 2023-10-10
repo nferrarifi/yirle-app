@@ -153,12 +153,11 @@ const EditForm = ({user, record}) => {
             <option value="TV Series">TV Series</option>
             <option value="Book">Book</option>
             <option value="Video Game">Video Game</option>
-            <option value="Record">Record</option>
+            <option value="Record">Documentary</option>
             <option value="Comic">Comic</option>
+            <option value="Podcast">Podcast</option>
             <option value="Anime">Anime</option>
             <option value="Manga">Manga</option>
-            <option value="Podcast">Podcast</option>
-            <option value="Audiobook">Audiobook</option>
             <option value="Light novel">Light novel</option>
         </select>
       </div>

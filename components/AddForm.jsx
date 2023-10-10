@@ -123,12 +123,11 @@ const AddForm = ({user}) => {
             <option>TV Series</option>
             <option>Book</option>
             <option>Video Game</option>
-            <option>Record</option>
+            <option>Documentary</option>
             <option>Comic</option>
+            <option>Podcast</option>
             <option>Anime</option>
             <option>Manga</option>
-            <option>Podcast</option>
-            <option>Audiobook</option>
             <option>Light novel</option>
         </select>
       </div>
