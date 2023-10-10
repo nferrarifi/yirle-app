@@ -24,26 +24,27 @@ export default function Login() {
         </svg>{' '}
         Back
       </Link>
-
       <form
         className="flex-1 flex flex-col w-full justify-center gap-2"
         action="/auth/sign-in"
         method="post"
       >
-        <label className="text-md" htmlFor="email">
+        <label className="text-[#3498db] text-md font-bold " htmlFor="email">
           Email
         </label>
         <input
-          className="rounded-md px-4 py-2 border mb-6 text-[#efefef] bg-slate-600"
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
+           focus:border-[#3498db] mb-4"
           name="email"
           placeholder="you@example.com"
           required
         />
-        <label className="text-md" htmlFor="password">
+        <label className="text-[#3498db] text-md font-bold" htmlFor="password">
           Password
         </label>
         <input
-          className="rounded-md px-4 py-2 border mb-6 text-[#efefef] bg-slate-600"
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
+           focus:border-[#3498db] mb-6"
           type="password"
           name="password"
           placeholder="••••••••"

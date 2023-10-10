@@ -32,16 +32,16 @@ const supabase = createServerComponentClient({ cookies })
     redirect("/login")
 }
 
- const records = await supabase.from('records').select().eq("userId", user.id).filter("deleted", "eq", 0)
+ const records = await supabase.from('records').select().eq("userId", user.id).filter("deleted", "eq", 0).order("created_at", {ascending: false})
 
   return (
     <div className="w-full flex flex-col items-center ">
       <Header user={user} />
-
       <div className=''>
         <section className='flex flex-col items-center justify-center space-y-4 lg:mb-10 mb-2 mt-8 '>
           <h1 className='text-6xl'>My Records</h1>
         </section>
+        
         <CardContainer records={records} />
       </div>
     </div>

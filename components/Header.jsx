@@ -43,7 +43,7 @@ const Header = ({user}) => {
       ) : (
         <Link
           href="/login"
-          className="py-2 px-3 flex rounded-md no-underline bg-btn-background hover:bg-btn-background-hover"
+          className="py-2 px-3 flex rounded-md no-underline bg-[#3498db] hover:bg-[#3482db] text-[#efefef] transition-all"
         >
           Login
         </Link>
