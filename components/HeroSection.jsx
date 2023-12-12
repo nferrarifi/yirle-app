@@ -135,10 +135,8 @@ export default function HeroSection({user}) {
             <h3 className='mt-6 text-lg xl:text-2xl'>The process consists of three <span className='text-[#e74c3c]'>simple</span> steps:</h3>
             <ul className="flex flex-col mt-6 ml-4 text-lg xl:text-2xl leading-8 font-light space-y-2 justify-center">
               <li>Create/Login to your account</li>
-              <li ><span className='line-through'>End world hunger</span></li>
-              <li className='flex items-center'>
-                Register your records
-                </li>     
+              <li>Click on the 'Add Records' button</li>
+              <li>Set up, preview and then create your first record!</li>
             </ul>
 
           </div>
